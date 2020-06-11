@@ -60,16 +60,14 @@ class ClientController {
       const city = null;
       const public_area = null;
 
-      await axios.get(`https://viacep.com.br/ws/${zipcode}/json/`).then(response => {
-        if(response.status === 200){
-          uf = response.data.uf;
-          city = response.data.localidade;
-          public_area = response.data.logradouro;
-        } else{
-          return res.status(400).json({error: 'Invalid zipcode'});
-        }
-      });
-
+      const response = await axios.get(`https://viacep.com.br/ws/${zipcode}/json/`);
+      if(!response.data.erro){
+        uf = response.data.uf;
+        city = response.data.localidade;
+        public_area = response.data.logradouro;
+      } else {
+        return res.status(400).json({error: 'Invalid zipcode'});
+      }
 
       const newClient = {
         name,
