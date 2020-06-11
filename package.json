@@ -5,6 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "ts-node-dev src/server.ts",
+    "migrate": "knex migrate:latest",
+    "unmigrate": "knex migrate:rollback",
+    "seed": "knex seed:run",
     "test": "yarn test --verbose false"
   },
   "author": "Christopher Moura",
@@ -22,6 +25,9 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "helmet": "^3.22.0"
+    "helmet": "^3.22.0",
+    "knex": "^0.21.1",
+    "pg": "^8.2.1",
+    "yup": "^0.29.1"
   }
 }
