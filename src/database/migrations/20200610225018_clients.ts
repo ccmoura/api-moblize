@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<any> {
     table.increments('id').primary();
     table.string('name').notNullable();
     table.string('cpf_cnpj', 14).notNullable();
-    table.date('birth_date').notNullable();
+    table.string('birth_date').notNullable();
     table.string('zipcode', 8).notNullable(); // CEP
     table.string('uf', 2).notNullable();
     table.string('city').notNullable();

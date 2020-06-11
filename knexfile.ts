@@ -2,8 +2,8 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    client: 'pg',
-    connection: process.env.DB_URL,
+    client: 'postgresql',
+    connection: process.env.DB_URL?.trim(),
     migrations: {
       directory: './src/database/migrations',
     },
@@ -11,8 +11,13 @@ module.exports = {
   },
 
   testing: {
-    client: 'pg',
-    connection: process.env.DB_URL,
+    client: 'postgresql',
+    connection: {
+      host: 'localhost',
+      database: 'moblizedb',
+      user: 'root',
+      password: 'root',
+    },
     migrations: {
       directory: './src/database/migrations',
     },
@@ -20,8 +25,13 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
-    connection: process.env.DB_URL,
+    client: 'postgresql',
+    connection: {
+      host: 'localhost',
+      database: 'moblizedb',
+      user: 'root',
+      password: 'root',
+    },
     migrations: {
       directory: './src/database/migrations',
     },
