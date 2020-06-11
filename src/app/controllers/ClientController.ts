@@ -119,7 +119,16 @@ class ClientController {
   }
 
   async delete(req: Request, res: Response){
+    const { id } = req.params;
+    const client = await knex('clients').where('id', id).first();
 
+    if(!client){
+      return res.status(400).json({message: `Client ${id} not found.`});
+    } else {
+      await knex('clients').where('id', id).del();
+
+      return res.status(200).json({message: `Client ${id} deleted.`});
+    }
   }
 }
 
