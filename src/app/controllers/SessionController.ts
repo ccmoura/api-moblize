@@ -22,7 +22,7 @@ class LoginController {
 
     const { id, name } = client;
 
-    return res.json({
+    return res.status(201).json({
       client: {
         id,
         name,

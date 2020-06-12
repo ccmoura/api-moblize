@@ -6,4 +6,4 @@ const server = app.listen(process.env.PORT || 3000, () => {
   console.log(`ENV: ${process.env.NODE_ENV}`);
 });
 
-module.exports = server;
+export default server;
