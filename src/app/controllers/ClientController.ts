@@ -107,7 +107,7 @@ class ClientController {
       'email'
       );
 
-      return res.json(allClients);
+      return res.status(200).json(allClients);
   }
 
   async delete(req: Request, res: Response){
