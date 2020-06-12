@@ -80,7 +80,7 @@ class ClientController {
         number,
         complement,
         email,
-        password: bcrypt.hashSync(password, 10), // precisa de hash
+        password: bcrypt.hashSync(password, 10),
       }
 
       const id = await knex('clients').returning('id').insert(newClient);
@@ -108,14 +108,6 @@ class ClientController {
       );
 
       return res.json(allClients);
-  }
-
-  async show(req: Request, res: Response){
-
-  }
-
-  async update(req: Request, res: Response){
-
   }
 
   async delete(req: Request, res: Response){

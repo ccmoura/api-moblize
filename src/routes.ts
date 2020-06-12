@@ -1,22 +1,23 @@
 import express from 'express';
 
 import ClientController from './app/controllers/ClientController';
-import LoginController from './app/controllers/LoginController';
+import SessionController from './app/controllers/SessionController';
+
+/** Use this authMiddleware on routes that require authentication (signed in user) */
+import authMiddleware from './app/middlewares/Auth';
 
 const routes = express.Router();
 
 /** Client routes */
 routes.post('/clients', ClientController.store);
-routes.get('/clients', ClientController.index);
-routes.get('/clients/:id', ClientController.show);
-routes.put('/clients/:id', ClientController.update);
-routes.delete('/clients/:id', ClientController.delete);
+routes.get('/clients', ClientController.index); // additional route
+routes.delete('/clients/:id', ClientController.delete); // additional route
 
 /** Login routes */
-routes.post('/clients', LoginController.store);
+routes.post('/sessions', SessionController.store);
 
 /** Other routes */
-routes.get('/', (req, res) => {
+routes.get('/', (req, res) => { // additional route
   res.sendFile(`${__dirname}/app/views/welcome.html`);
 });
 
