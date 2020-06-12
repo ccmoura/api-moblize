@@ -28,6 +28,7 @@ in the .env.example file I left the url of the database that I created, if you w
 # Tests
 
 * To run jest tests
+* Simple unit and integration tests are in __tests__ folder
 ```shell
 > npm run test
 ```
