@@ -1,11 +1,11 @@
 import {Request, Response} from 'express';
 import axios from 'axios';
-import knex from './../../database/connection.ts';
+import knex from './../../database/connection';
 import * as Yup from 'yup';
 import bcrypt from 'bcrypt';
 import moment from 'moment';
 
-import DocumentValidator from './utils/DocumentValidator.ts'
+import DocumentValidator from './utils/DocumentValidator';
 
 class ClientController {
 
@@ -23,8 +23,8 @@ class ClientController {
       complement: Yup.string(),
       email: Yup.string().matches(emailRegex).required(),
       password: Yup.string().min(8).matches(passwordRegex).required(),
-      repeat_password: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match.'),
-      repeat_email: Yup.string().oneOf([Yup.ref('email'), null], 'E-mails must match.'),
+      repeat_password: Yup.string().oneOf([Yup.ref('password'), ''], 'Passwords must match.'),
+      repeat_email: Yup.string().oneOf([Yup.ref('email'), ''], 'E-mails must match.'),
     });
 
     const isValidDocument = DocumentValidator.cpf(req.body.cpf_cnpj) || DocumentValidator.cnpj(req.body.cpf_cnpj);
@@ -56,9 +56,9 @@ class ClientController {
         password,
       } = req.body;
 
-      const uf = null;
-      const city = null;
-      const public_area = null;
+      let uf = '';
+      let city = '';
+      let public_area = '';
 
       const response = await axios.get(`https://viacep.com.br/ws/${zipcode}/json/`);
       if(!response.data.erro){

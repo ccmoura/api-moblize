@@ -25,6 +25,13 @@ in the .env.example file I left the url of the database that I created, if you w
 > npm run start
 ```
 
+# Tests
+
+* To run jest tests
+```shell
+> npm run test
+```
+
 ## Info
 
 * To make it easier to test routes, I left a file from my workspace to be imported into Insomnia in the / insomnia folder and the description of the endpoints in this [swagger link](https://app.swaggerhub.com/apis/ccmoura/moblizeapi/1.0.0)

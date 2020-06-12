@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
-import knex from './../../database/connection.ts';
+import knex from './../../database/connection';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-import loginConfig from '../../config/Login.ts';
+import loginConfig from '../../config/Login';
 
 class LoginController {
   async store(req: Request, res: Response){
@@ -28,7 +28,7 @@ class LoginController {
         name,
         email,
       },
-      token: jwt.sign({ id }, loginConfig.secret, {
+      token: jwt.sign({ id }, loginConfig.secret || 'secret', {
         expiresIn: loginConfig.expiresIn,
       }),
     });

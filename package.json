@@ -4,19 +4,26 @@
   "description": "API for technical test",
   "main": "server.js",
   "scripts": {
-    "start": "ts-node-dev src/server.ts",
+    "start": "ts-node-dev src/server.ts --ignore __tests__",
     "migrate": "knex migrate:latest",
     "unmigrate": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "test": "yarn test --verbose false"
+    "test": "jest"
   },
   "author": "Christopher Moura",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
+    "@types/helmet": "0.0.47",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.0.13",
     "@types/yup": "^0.29.2",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.1.2",
@@ -33,6 +40,7 @@
     "knex": "^0.21.1",
     "moment": "^2.26.0",
     "pg": "^8.2.1",
+    "sqlite3": "^4.2.0",
     "yup": "^0.29.1"
   }
 }

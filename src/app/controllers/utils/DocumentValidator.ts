@@ -1,3 +1,5 @@
+
+
 export default {
   cpf(cpf: string) {
   var numbers, digits, sum, i, result, equal_digits;
@@ -16,16 +18,16 @@ export default {
         digits = cpf.substring(9);
         sum = 0;
         for (i = 10; i > 1; i--)
-              sum += numbers.charAt(10 - i) * i;
+              sum += Number(numbers.charAt(10 - i)) * i;
         result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-        if (result != digits.charAt(0))
+        if (result != Number(digits.charAt(0)))
               return false;
         numbers = cpf.substring(0,10);
         sum = 0;
         for (i = 11; i > 1; i--)
-              sum += numbers.charAt(11 - i) * i;
+              sum += Number(numbers.charAt(11 - i)) * i;
         result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-        if (result != digits.charAt(1))
+        if (result != Number(digits.charAt(1)))
               return false;
         return true;
         }
@@ -55,31 +57,31 @@ export default {
         cnpj == "99999999999999")
         return false;
 
-    let tamanho = cnpj.length - 2
-    let numbers = cnpj.substring(0,tamanho);
-    let digits = cnpj.substring(tamanho);
+    let size = cnpj.length - 2
+    let numbers = cnpj.substring(0,size);
+    let digits = cnpj.substring(size);
     let sum = 0;
-    let pos = tamanho - 7;
-    for (let i = tamanho; i >= 1; i--) {
-      sum += numbers.charAt(tamanho - i) * pos--;
+    let pos = size - 7;
+    for (let i = size; i >= 1; i--) {
+      sum += Number(numbers.charAt(size - i)) * pos--;
       if (pos < 2)
             pos = 9;
     }
     let result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-    if (result != digits.charAt(0))
+    if (result != Number(digits.charAt(0)))
         return false;
 
-    tamanho = tamanho + 1;
-    numbers = cnpj.substring(0,tamanho);
+    size = size + 1;
+    numbers = cnpj.substring(0,size);
     sum = 0;
-    pos = tamanho - 7;
-    for (let i = tamanho; i >= 1; i--) {
-      sum += numbers.charAt(tamanho - i) * pos--;
+    pos = size - 7;
+    for (let i = size; i >= 1; i--) {
+      sum += Number(numbers.charAt(size - i)) * pos--;
       if (pos < 2)
             pos = 9;
     }
     result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-    if (result != digits.charAt(1))
+    if (result != Number(digits.charAt(1)))
           return false;
 
     return true;

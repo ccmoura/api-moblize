@@ -1,40 +1,34 @@
 require('dotenv').config();
+import path from 'path';
 
-module.exports = {
+export default {
   development: {
     client: 'postgresql',
     connection: process.env.DB_URL?.trim(),
     migrations: {
-      directory: './src/database/migrations',
+      directory: path.join(__dirname, 'src', 'database', "migrations"),
     },
-    seeds: { directory: './src/database/seeds' },
+    seeds: { directory: path.join(__dirname, 'src', 'database', "seeds") },
   },
 
-  testing: {
-    client: 'postgresql',
-    connection: {
-      host: 'localhost',
-      database: 'moblizedb',
-      user: 'root',
-      password: 'root',
-    },
+  test: {
+    client: "sqlite3",
+    connection: ":memory:",
+    useNullAsDefault: true,
     migrations: {
-      directory: './src/database/migrations',
+      directory: path.join(__dirname, 'src', 'database', "migrations")
     },
-    seeds: { directory: './src/database/seeds' },
+    seeds: {
+      directory: path.join(__dirname, 'src', 'database', "seeds")
+    }
   },
 
   production: {
     client: 'postgresql',
-    connection: {
-      host: 'localhost',
-      database: 'moblizedb',
-      user: 'root',
-      password: 'root',
-    },
+    connection: process.env.DB_URL?.trim(),
     migrations: {
-      directory: './src/database/migrations',
+      directory: path.join(__dirname, 'src', 'database', "migrations"),
     },
-    seeds: { directory: './src/database/seeds' },
+    seeds: { directory: path.join(__dirname, 'src', 'database', "seeds") },
   },
 };
