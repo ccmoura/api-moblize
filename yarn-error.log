@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\chris\Desktop\moblize\package.json: Unexpected token } in JSON at position 340
+  SyntaxError: C:\Users\chris\Desktop\moblize\package.json: Unexpected token } in JSON at position 322
       at JSON.parse (<anonymous>)
       at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -32,17 +32,24 @@ npm manifest:
       "migrate": "knex migrate:latest",
       "unmigrate": "knex migrate:rollback",
       "seed": "knex seed:run",
-      "test": "SET NODE_ENV=test jest",
+      "test": "jest",
     },
     "author": "Christopher Moura",
     "license": "ISC",
     "devDependencies": {
+      "@types/bcrypt": "^3.0.0",
+      "@types/cors": "^2.8.6",
       "@types/express": "^4.17.6",
+      "@types/helmet": "0.0.47",
+      "@types/jest": "^26.0.0",
+      "@types/jsonwebtoken": "^8.5.0",
       "@types/node": "^14.0.13",
+      "@types/supertest": "^2.0.9",
       "@types/yup": "^0.29.2",
       "jest": "^26.0.1",
       "nodemon": "^2.0.4",
       "supertest": "^4.0.2",
+      "ts-jest": "^26.1.0",
       "ts-node": "^8.10.2",
       "ts-node-dev": "^1.0.0-pre.44",
       "tslint": "^6.1.2",
@@ -59,7 +66,22 @@ npm manifest:
       "knex": "^0.21.1",
       "moment": "^2.26.0",
       "pg": "^8.2.1",
+      "sqlite3": "^4.2.0",
       "yup": "^0.29.1"
+    },
+    "jest": {
+      "transform": {
+        "^.+\\.ts$": "ts-jest"
+      },
+      "testRegex": "\\.test\\.ts",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "node"
+      ]
     }
   }
 

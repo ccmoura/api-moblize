@@ -12,15 +12,12 @@ export default {
   },
 
   test: {
-    client: "sqlite3",
-    connection: ":memory:",
-    useNullAsDefault: true,
+    client: 'postgresql',
+    connection: process.env.DB_URL?.trim(),
     migrations: {
-      directory: path.join(__dirname, 'src', 'database', "migrations")
+      directory: path.join(__dirname, 'src', 'database', "migrations"),
     },
-    seeds: {
-      directory: path.join(__dirname, 'src', 'database', "seeds")
-    }
+    seeds: { directory: path.join(__dirname, 'src', 'database', "seeds") },
   },
 
   production: {
